@@ -1,0 +1,576 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+.hero-section{
+    width:100%;
+    min-height:100vh;
+    background-image:url('/static/images/shopping_banner.jpg');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.overlay{
+    width:100%;
+    min-height:100vh;
+	height:auto;
+    background:rgba(0,0,0,0.45);
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.login-card{
+    width:650px;
+    padding:30px 35px;
+
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.login-card h1{
+    color:white;
+    font-size:58px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.login-card h2{
+    color:#68f838;
+    text-shadow:0 0 10px rgba(56,189,248,0.8);
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.login-card p{
+    color:white;
+    font-size:22px;
+    margin-bottom:25px;
+}
+
+/* Buttons */
+
+.button-group{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    width:180px;
+
+    text-decoration:none;
+    color:white;
+
+    padding:14px 0;
+
+    border:none;
+    border-radius:10px;
+
+    font-size:18px;
+    font-weight:bold;
+
+    text-align:center;
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.btn-user{
+    background:#2563eb;
+}
+
+.btn-register{
+    background:#10b981;
+}
+
+.btn-admin{
+    background:#ef4444;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ===========================
+   Login Page
+=========================== */
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.input-group label{
+    width:75%;
+    text-align:left;
+
+    color:white;
+    font-size:16px;
+    font-weight:600;
+
+    margin-bottom:8px;
+}
+
+.input-group input{
+    width:75%;
+    padding:14px;
+
+    border:none;
+    border-radius:10px;
+
+    font-size:16px;
+    outline:none;
+}
+
+.login-btn{
+    margin-top:8px;
+}
+
+/* Login/Register Links */
+
+.register-text{
+    color:white;
+    font-size:18px;
+    margin-top:20px;
+    margin-bottom:0;
+}
+
+.bottom-link{
+    color:#e71062;
+    text-decoration:none;
+    font-weight:bold;
+    margin-left:5px;
+}
+
+.bottom-link:hover{
+    color:#ffffff;
+    text-decoration:underline;
+}
+
+/* Home Link */
+
+.home-link{
+    margin-top:15px;
+}
+
+.home-link a{
+    color:#ffffff;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.home-link a:hover{
+    color:#68f838;
+}
+
+/* Top Navigation Links */
+
+.top-links{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin-bottom:15px;
+}
+
+.top-links a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.top-links a:hover{
+    color:#68f838;
+}
+
+/* ===========================
+   Register Page
+=========================== */
+
+.register-card{
+    width:850px;
+    padding:25px 30px;
+}
+
+.register-card h1{
+    color:white;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.register-card h2{
+    color:#68f838;
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.register-card p{
+    color:white;
+    font-size:18px;
+    margin-bottom:12px;
+}
+
+.row-group{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-bottom:10px;
+}
+
+.row-group .input-group{
+    width:45%;
+    margin-bottom:0;
+    align-items:flex-start;
+}
+
+.row-group .input-group label{
+    width:100%;
+    text-align:left;
+}
+
+.row-group .input-group input{
+    width:100%;
+}
+
+.address-group{
+    width:93%;
+    margin:0 auto 20px auto;
+    align-items:flex-start;
+}
+
+.address-group label{
+    width:100%;
+    text-align:left;
+}
+
+.address-group input{
+    width:100%;
+}
+
+.register-card .btn-register{
+    width:200px;
+}
+
+.register-card .register-text{
+    margin-top:15px;
+    margin-bottom:8px;
+}
+
+/* ===========================
+   Top Navigation
+=========================== */
+
+.top-nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.top-nav a{
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.top-nav span{
+    color:white;
+    font-size:18px;
+}
+
+.top-nav a:hover{
+    color:#68f838;
+}
+
+/* ===========================
+   Admin Dashboard
+=========================== */
+
+.admin-dashboard{
+    width:700px;
+}
+
+.dashboard-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.dashboard-buttons .btn{
+    width:220px;
+}
+
+.btn-danger{
+    background:#dc2626;
+}
+
+.btn-danger:hover{
+    background:#b91c1c;
+}
+
+/* ===========================
+   Add Product Page
+=========================== */
+
+.product-card{
+    width:950px;
+    padding:30px;
+}
+
+.product-card h1{
+    font-size:50px;
+}
+
+.custom-select{
+    width:100%;
+    padding:14px;
+
+    border:none;
+    border-radius:10px;
+
+    font-size:16px;
+    outline:none;
+
+    background:white;
+}
+
+.file-upload{
+    width:100% !important;
+    padding:12px !important;
+
+    background:white;
+    border-radius:10px;
+}
+
+.product-textarea{
+    width:100%;
+    height:70px;
+
+    padding:12px;
+
+    border:none;
+    border-radius:10px;
+
+    resize:none;
+    outline:none;
+
+    font-size:16px;
+}
+
+.address-group{
+    width:93%;
+    margin:0 auto 10px auto;
+    align-items:flex-start;
+}
+
+.product-card .btn{
+    width:220px;
+}
+
+.welcome-text{
+    color:#68f838;
+    font-size:22px;
+    font-weight:600;
+    margin-top:15px;
+}
+
+/* ===========================
+   Orders & Feedback Pages
+=========================== */
+
+.order-card{
+    width:1500px;
+    max-width:95%;
+    padding:30px;
+}
+
+.table-container{
+    width:100%;
+    max-height:450px;
+
+    overflow-y:auto;
+    overflow-x:auto;
+
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.table-container table{
+    width:100%;
+    border-collapse:collapse;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(5px);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.table-container th{
+    background:rgba(0,0,0,0.35);
+    color:white;
+    padding:12px;
+    font-size:16px;
+}
+
+.table-container td{
+    color:black;
+    padding:10px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.15);
+
+    background:rgba(255,255,255,0.65);
+}
+
+.table-container tr:hover{
+    background:rgba(255,255,255,0.08);
+}
+
+.table-container img{
+    border-radius:8px;
+}
+
+textarea.product-textarea{
+    width:75%;
+    min-height:150px;
+    padding:15px;
+
+    border:none;
+    border-radius:10px;
+
+    resize:vertical;
+    outline:none;
+
+    font-size:16px;
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* ===========================
+   Feedback Table
+=========================== */
+
+.order-card h1{
+    color:white;
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+.order-card h2{
+    color:#68f838;
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.order-card p{
+    color:white;
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.table-container table{
+    width:100%;
+    min-width:700px;
+    border-collapse:collapse;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.table-container th{
+    background:rgba(0,0,0,0.45);
+    color:white;
+    padding:14px;
+    font-size:18px;
+    font-weight:600;
+}
+
+.table-container td{
+    background:rgba(255,255,255,0.85);
+    color:black;
+    padding:12px;
+    font-size:17px;
+    text-align:center;
+    border-bottom:1px solid #dcdcdc;
+}
+
+.table-container tr:nth-child(even){
+    background:rgba(255,255,255,0.1);
+}
+
+.table-container tr:hover td{
+    background:rgba(255,255,255,0.95);
+}
+
+.table-container{
+    width:90%;
+    margin:20px auto;
+    overflow-x:auto;
+}
+
+/* Product Catalogue Page */
+
+.table-container table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table-container table th{
+    background:rgba(0,0,0,0.45);
+    color:white !important;
+    padding:12px;
+    text-align:center;
+}
+
+.table-container table td{
+    background:rgba(255,255,255,0.85);
+    color:black !important;
+    padding:10px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.table-container table img{
+    width:160px !important;
+    height:160px !important;
+    border-radius:10px;
+}
+
+.table-container table a{
+    color:#2563eb;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.table-container table a:hover{
+    text-decoration:underline;
+}
