@@ -1,0 +1,32 @@
+create database AIBargainingAgent;
+use AIBargainingAgent;
+
+create table register(username varchar(30) primary key,
+password varchar(30),
+contact varchar(12),
+email varchar(30),
+address varchar(40));
+
+create table addproduct(productid varchar(50),
+productname varchar(50),
+product_type varchar(50),
+product_style varchar(50),
+product_brand varchar(50),
+cost varchar(50),
+description varchar(150),
+image varchar(50));
+
+create table customer_order(purchaser_name varchar(50),
+product_id varchar(50),
+purchase_date timestamp,
+purchaser_details varchar(100),
+product_details varchar(100),
+amount double,
+card_no varchar(25),
+cvv_no varchar(5));
+
+create table feedback(username varchar(50),
+feedback varchar(400),
+feedback_date varchar(40));
+
+
