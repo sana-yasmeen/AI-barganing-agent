@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product | AI Bargaining Agent</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <script>
+    function validate(){
+
+        var x=document.forms["f1"]["t1"].value;
+        var c=document.forms["f1"]["t5"].value;
+        var d=document.forms["f1"]["t6"].value;
+        var img=document.forms["f1"]["t7"].value;
+
+        if(x==""){
+            alert("Product Name must be entered");
+            return false;
+        }
+
+        if(c==""){
+            alert("Cost must be entered");
+            return false;
+        }
+
+        if(isNaN(c)){
+            alert("Please enter valid Cost");
+            return false;
+        }
+
+        if(d==""){
+            alert("Description must be entered");
+            return false;
+        }
+
+        if(img==""){
+            alert("Please upload Product Image");
+            return false;
+        }
+
+        return true;
+    }
+    </script>
+
+</head>
+
+<body>
+
+<div class="hero-section">
+
+    <div class="overlay">
+
+        <div class="login-card product-card">
+
+            <div class="top-nav">
+                <a href="{% url 'AdminLoginAction' %}">📊 Dashboard</a>
+                <span>|</span>
+                <a href="{% url 'ViewOrders' %}">📦 Orders</a>
+                <span>|</span>
+                <a href="{% url 'ViewFeedback' %}">💬 Feedback</a>
+            </div>
+
+            <h1>🛍️ Add Product</h1>
+
+            <h2>AI Bargaining Agent</h2>
+
+            <p>
+                Add new product details for smart price negotiation
+            </p>
+
+            <form name="f1"
+                  method="post"
+                  action="{% url 'AddProductData' %}"
+                  enctype="multipart/form-data"
+                  onsubmit="return validate()">
+
+                {% csrf_token %}
+
+                <div class="row-group">
+
+                    <div class="input-group">
+                        <label>Product Name</label>
+                        <input type="text"
+                               name="t1"
+                               placeholder="Enter Product Name">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Cost</label>
+                        <input type="text"
+                               name="t5"
+                               placeholder="Enter Cost">
+                    </div>
+
+                </div>
+
+                <div class="row-group">
+
+                    <div class="input-group">
+                        <label>Product Type</label>
+
+                        <select name="t2" class="custom-select">
+                            <option value="Shirt">Shirt</option>
+                            <option value="T-Shirt">T-Shirt</option>
+                            <option value="Jeans">Jeans</option>
+                            <option value="Pants">Pants</option>
+                            <option value="Dress">Dress</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Product Style</label>
+
+                        <select name="t3" class="custom-select">
+                            <option value="Bohemian">Bohemian</option>
+                            <option value="Vintage">Vintage</option>
+                            <option value="Streetwear">Streetwear</option>
+                            <option value="Casual">Casual</option>
+                            <option value="Formal">Formal</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row-group">
+
+                    <div class="input-group">
+                        <label>Brand</label>
+
+                        <select name="t4" class="custom-select">
+                            <option value="Levis">Levis</option>
+                            <option value="Adidas">Adidas</option>
+                            <option value="Nike">Nike</option>
+                            <option value="Fabindia">Fabindia</option>
+                            <option value="Biba">Biba</option>
+                            <option value="Tommy Hilfiger">Tommy Hilfiger</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Product Image</label>
+
+                        <input type="file"
+                               name="t7"
+                               class="file-upload">
+                    </div>
+
+                </div>
+
+                <div class="input-group address-group">
+
+                    <label>Description</label>
+
+                    <textarea name="t6"
+                              class="product-textarea"
+                              placeholder="Enter Product Description"></textarea>
+
+                </div>
+
+                <input type="submit"
+                       value="Add Product"
+                       class="btn btn-admin">
+
+            </form>
+
+            <br>
+
+            <div class="welcome-text">
+                {{ data }}
+            </div>
+
+            <div class="home-link">
+                <a href="{% url 'AdminLoginAction' %}">
+					← Back to Dashboard
+				</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,286 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment | AI Bargaining Agent</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    background:url("{% static 'images/shopping_banner.jpg' %}") no-repeat center center fixed;
+    background-size:cover;
+    font-family:'Segoe UI',sans-serif;
+}
+
+.main-container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.glass-card{
+    width:750px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:25px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 8px 30px rgba(0,0,0,0.35);
+}
+
+.page-header h1{
+    color:white;
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.page-header h2{
+    color:#68f838;
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.page-header p{
+    color:white;
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+.top-nav{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.top-nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.top-nav span{
+    color:white;
+}
+
+.top-nav a:hover{
+    color:#68f838;
+}
+
+.payment-table{
+    margin:auto;
+}
+
+.payment-table td{
+    padding:10px;
+}
+
+.payment-table label{
+    color:white;
+    font-size:18px;
+    font-weight:600;
+}
+
+.payment-table input{
+    width:260px;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.total-box{
+    background:#f5f5f5;
+    font-weight:bold;
+}
+
+.payment-btn{
+    background:#10b981;
+    color:white;
+    border:none;
+    padding:14px 30px;
+    border-radius:10px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.payment-btn:hover{
+    transform:translateY(-2px);
+}
+
+.back-link{
+    margin-top:25px;
+}
+
+.back-link a{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+}
+
+.back-link a:hover{
+    color:#68f838;
+}
+</style>
+
+<script>
+function validate(){
+
+	var x=document.forms["f1"]["t2"].value;
+	var y=document.forms["f1"]["t3"].value;
+
+	if(x==null || x==""){
+		alert("Card Number must be entered");
+		document.f1.t2.focus();
+		return false;
+	}
+
+	if(!luhnCheck(x)){
+		alert("Please enter valid Card Number");
+		document.f1.t2.focus();
+		return false;
+	}
+
+	if(y==null || y==""){
+		alert("CVV must be entered");
+		document.f1.t3.focus();
+		return false;
+	}
+
+	if(isNaN(y)){
+		alert("CVV must be numeric");
+		document.f1.t3.focus();
+		return false;
+	}
+
+	if(y.length != 3){
+		alert("CVV must contain exactly 3 digits");
+		document.f1.t3.focus();
+		return false;
+	}
+
+	return true;
+}
+
+function luhnCheck(cardNumber){
+
+	let sum = 0;
+	let isEven = false;
+
+	for(let i = cardNumber.length - 1; i >= 0; i--){
+
+		let digit = parseInt(cardNumber.charAt(i),10);
+
+		if(isEven){
+			digit *= 2;
+
+			if(digit > 9){
+				digit -= 9;
+			}
+		}
+
+		sum += digit;
+		isEven = !isEven;
+	}
+
+	return (sum % 10) === 0;
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="main-container">
+
+<div class="glass-card">
+
+    <div class="top-nav">
+        <a href="{% url 'ItemSearch' %}">🔍 Search Catalogue</a>
+        <span>|</span>
+        <a href="{% url 'TrackOrder' %}">📦 Track Order</a>
+        <span>|</span>
+        <a href="{% url 'Feedback' %}">💬 Feedback</a>
+        <span>|</span>
+        <a href="{% url 'index' %}">🚪 Logout</a>
+    </div>
+
+    <div class="page-header">
+        <h1>💳 Payment</h1>
+        <h2>AI Bargaining Agent</h2>
+        <p>Complete your purchase securely</p>
+    </div>
+
+    <form name="f1"
+          method="post"
+          action="{% url 'PaymentAction' %}"
+          onsubmit="return validate()">
+
+        {% csrf_token %}
+
+        <table class="payment-table">
+
+            <tr>
+                <td><label>Total Amount</label></td>
+                <td>
+                    <input type="text"
+                           name="t1"
+                           value="{{ total }}"
+                           readonly
+                           class="total-box">
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Card Number</label></td>
+                <td>
+                    <input type="text"
+                           name="t2"
+                           placeholder="Enter Card Number">
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>CVV</label></td>
+                <td>
+                    <input type="password"
+                           name="t3"
+                           placeholder="Enter CVV">
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" class="payment-btn">
+                        Confirm Payment
+                    </button>
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+
+    <div class="back-link">
+        <a href="{% url 'ItemSearch' %}">
+            ← Continue Shopping
+        </a>
+    </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

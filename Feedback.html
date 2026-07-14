@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Feedback | AI Bargaining Agent</title>
+
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<script>
+function validate(){
+
+    var feedback = document.forms["f1"]["t1"].value;
+
+    if(feedback == null || feedback == ""){
+        alert("Please enter your feedback");
+        document.f1.t1.focus();
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="hero-section">
+
+    <div class="overlay">
+
+        <div class="login-card" style="width:850px;">
+
+            <div class="top-nav">
+                <a href="{% url 'ItemSearch' %}">🔍 Search Catalogue</a>
+                <span>|</span>
+                <a href="{% url 'TrackOrder' %}">📦 Track Orders</a>
+                <span>|</span>
+                <a href="{% url 'Feedback' %}">💬 Feedback</a>
+                <span>|</span>
+                <a href="{% url 'index' %}">🚪 Logout</a>
+            </div>
+
+            <h1>💬 Feedback</h1>
+
+            <h2>AI Bargaining Agent</h2>
+
+            <p>
+                Share your experience and help us improve our smart bargaining services
+            </p>
+
+            {% if data %}
+            <div class="welcome-text">
+                {{ data }}
+            </div>
+            {% endif %}
+
+            <form name="f1"
+                  method="post"
+                  action="{% url 'FeedbackAction' %}"
+                  onsubmit="return validate()">
+
+                {% csrf_token %}
+
+                <div class="input-group">
+
+                    <label style="width:90%;">
+                        Your Feedback
+                    </label>
+
+                    <textarea
+                        name="t1"
+                        class="product-textarea"
+                        style="
+                            width:90%;
+                            height:180px;
+                            font-size:17px;
+                            padding:15px;
+                        "
+                        placeholder="Write your feedback here..."></textarea>
+
+                </div>
+
+                <br>
+
+                <input type="submit"
+                       value="📨 Submit Feedback"
+                       class="btn btn-register">
+
+            </form>
+
+            <div class="home-link" style="margin-top:30px;">
+                <a href="javascript:history.back()">
+                    ← Back
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

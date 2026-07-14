@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New User Registration | AI Bargaining Agent</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <script>
+    function validate(){
+
+        var x=document.forms["f1"]["username"].value;
+        var y=document.forms["f1"]["password"].value;
+        var c=document.forms["f1"]["contact"].value;
+        var e=document.forms["f1"]["email"].value;
+        var a=document.forms["f1"]["address"].value;
+
+        if(x==""){
+            alert("Username must be entered");
+            return false;
+        }
+
+        if(y==""){
+            alert("Password must be entered");
+            return false;
+        }
+
+        if(c==""){
+            alert("Contact Number must be entered");
+            return false;
+        }
+
+        if(isNaN(c)){
+            alert("Please enter valid Contact Number");
+            return false;
+        }
+
+        if(e==""){
+            alert("Email ID must be entered");
+            return false;
+        }
+
+        var filter=/^([a-zA-Z0-9_\.\-])+\@(gmail+\.)+(com)+$/;
+
+        if(!filter.test(e)){
+            alert("Enter valid Gmail address");
+            return false;
+        }
+
+        if(a==""){
+            alert("Address must be entered");
+            return false;
+        }
+
+        return true;
+    }
+    </script>
+
+</head>
+
+<body>
+
+<div class="hero-section">
+
+    <div class="overlay">
+
+        <div class="login-card register-card">
+
+			<div class="top-nav">
+				<a href="{% url 'index' %}">
+					🏠 Home
+				</a>
+
+				<span>|</span>
+
+				<a href="{% url 'Login' %}">
+					🔑 Login
+				</a>
+			</div>
+
+            <h1>📝 Register</h1>
+
+            <h2>AI Bargaining Agent</h2>
+
+            <p>
+                Create your account and start smart price negotiation
+            </p>
+
+            <form name="f1"
+                  method="post"
+                  action="{% url 'Signup' %}"
+                  onsubmit="return validate()">
+
+                {% csrf_token %}
+
+                <div class="row-group">
+
+                    <div class="input-group">
+                        <label>Username</label>
+                        <input type="text"
+                               name="username"
+                               placeholder="Enter Username">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password"
+                               name="password"
+                               placeholder="Enter Password">
+                    </div>
+
+                </div>
+
+                <div class="row-group">
+
+                    <div class="input-group">
+                        <label>Contact Number</label>
+                        <input type="text"
+                               name="contact"
+                               placeholder="Enter Contact Number">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="text"
+                               name="email"
+                               placeholder="Enter Gmail Address">
+                    </div>
+
+                </div>
+
+                <div class="input-group address-group">
+
+                    <label>Address</label>
+
+                    <input type="text"
+                           name="address"
+                           placeholder="Enter Address">
+
+                </div>
+
+                <input type="submit"
+                       value="Register"
+                       class="btn btn-register">
+
+            </form>
+
+            <br>
+
+            <font color="white">
+                {{ data }}
+            </font>
+
+            <p class="register-text">
+                Already have an account?
+                <a href="{% url 'Login' %}" class="bottom-link">
+                    Login Here
+                </a>
+            </p>
+
+            <div class="home-link">
+                <a href="{% url 'index' %}">
+                    ← Back to Home
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

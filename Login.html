@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login | AI Bargaining Agent</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <script>
+    function validate(){
+        var username = document.forms["f1"]["username"].value;
+        var password = document.forms["f1"]["password"].value;
+
+        if(username == ""){
+            alert("Please enter username");
+            return false;
+        }
+
+        if(password == ""){
+            alert("Please enter password");
+            return false;
+        }
+
+        return true;
+    }
+    </script>
+
+</head>
+
+<body>
+
+<div class="hero-section">
+
+    <div class="overlay">
+
+        <div class="login-card">
+
+			<div class="top-nav">
+				<a href="{% url 'index' %}">
+					🏠 Home
+				</a>
+
+				<span>|</span>
+
+				<a href="{% url 'Register' %}">
+					📝 Register
+				</a>
+			</div>
+
+            <h1>👤 User Login</h1>
+
+            <h2>AI Bargaining Agent</h2>
+
+            <p>
+                Sign in to continue shopping and negotiating prices
+            </p>
+
+            <form name="f1"
+                  method="post"
+                  action="{% url 'UserLogin' %}"
+                  onsubmit="return validate()">
+
+                {% csrf_token %}
+
+                <div class="input-group">
+                    <label>Username</label>
+
+                    <input type="text"
+                           name="username"
+                           placeholder="Enter Username">
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+
+                    <input type="password"
+                           name="password"
+                           placeholder="Enter Password">
+                </div>
+
+                <input type="submit"
+                       value="Login"
+                       class="btn btn-user">
+
+            </form>
+
+            <br>
+
+            <font color="white">
+                {{ data }}
+            </font>
+
+            <br><br>
+
+            <p class="register-text">
+                New User?
+                <a href="{% url 'Register' %}" class="bottom-link">
+                    Create Account
+                </a>
+            </p>
+
+            <div class="home-link">
+                <a href="{% url 'index' %}">
+                    ← Back to Home
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

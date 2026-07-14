@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard | AI Bargaining Agent</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<div class="hero-section">
+
+    <div class="overlay">
+
+        <div class="login-card admin-dashboard">
+
+            <h1> Admin Dashboard</h1>
+
+            <h2>AI Bargaining Agent</h2>
+
+            <p>
+                Manage products, orders and customer feedback
+            </p>
+
+            <div class="welcome-text">
+				{{ data }}
+			</div>
+
+            <br><br>
+
+            <div class="dashboard-buttons">
+
+                <a href="{% url 'AddProduct' %}"
+                   class="btn btn-admin">
+                   ➕ Add Product
+                </a>
+
+                <a href="{% url 'ViewOrders' %}"
+                   class="btn btn-user">
+                   📦 View Orders
+                </a>
+
+                <a href="{% url 'ViewFeedback' %}"
+                   class="btn btn-register">
+                   💬 Feedback
+                </a>
+
+                <a href="{% url 'index' %}"
+                   class="btn btn-danger">
+                   🚪 Logout
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

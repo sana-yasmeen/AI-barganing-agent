@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Search Catalogue | AI Bargaining Agent</title>
+
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<script>
+function validate(){
+    return true;
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="hero-section">
+
+    <div class="overlay">
+
+        <div class="login-card product-card">
+
+            <div class="top-nav">
+                <a href="{% url 'TrackOrder' %}">📦 Track Order</a>
+                <span>|</span>
+                <a href="{% url 'Feedback' %}">💬 Feedback</a>
+                <span>|</span>
+                <a href="{% url 'index' %}">🚪 Logout</a>
+            </div>
+
+            <h1>🔍 Catalogue Search</h1>
+
+            <h2>AI Bargaining Agent</h2>
+
+            <p>
+                Search products by type, style and brand
+            </p>
+
+            <font color="white">
+                {{ data }}
+            </font>
+
+            <br><br>
+
+            <form name="f1"
+                  method="post"
+                  action="{% url 'SearchItemData' %}"
+                  onsubmit="return validate()">
+
+                {% csrf_token %}
+
+                <div class="row-group">
+
+                    <div class="input-group">
+
+                        <label>Product Type</label>
+
+                        <select name="t1" class="custom-select">
+                            <option value="-">Select Type</option>
+                            <option value="Shirt">Shirt</option>
+                            <option value="T-Shirt">T-Shirt</option>
+                            <option value="Jeans">Jeans</option>
+                            <option value="Pants">Pants</option>
+                            <option value="Dress">Dress</option>
+                            <option value="Others">Others</option>
+                        </select>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Product Style</label>
+
+                        <select name="t2" class="custom-select">
+                            <option value="-">Select Style</option>
+                            <option value="Bohemian">Bohemian</option>
+                            <option value="Vintage">Vintage</option>
+                            <option value="Streetwear">Streetwear</option>
+                            <option value="Casual">Casual</option>
+                            <option value="Formal">Formal</option>
+                            <option value="Others">Others</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="address-group">
+
+                    <label style="color:white;font-weight:600;">
+                        Product Brand
+                    </label>
+
+                    <select name="t3" class="custom-select">
+                        <option value="-">Select Brand</option>
+                        <option value="Levis">Levis</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Fabindia">Fabindia</option>
+                        <option value="Biba">Biba</option>
+                        <option value="Tommy Hilfiger">Tommy Hilfiger</option>
+                        <option value="Others">Others</option>
+                    </select>
+
+                </div>
+
+                <br>
+
+                <input type="submit"
+                       value="Search Products"
+                       class="btn btn-user">
+
+            </form>
+
+            <div class="home-link">
+                <a href="{% url 'UserScreen' %}">
+                    ← Back
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

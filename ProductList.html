@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Catalogue | AI Bargaining Agent</title>
+
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+
+<div class="hero-section">
+
+    <div class="overlay">
+
+        <div class="login-card order-card">
+
+            <div class="top-nav">
+                <a href="{% url 'ItemSearch' %}">🔍 Search Catalogue</a>
+                <span>|</span>
+                <a href="{% url 'TrackOrder' %}">📦 Track Order</a>
+                <span>|</span>
+                <a href="{% url 'Feedback' %}">💬 Feedback</a>
+                <span>|</span>
+                <a href="{% url 'index' %}">🚪 Logout</a>
+            </div>
+
+            <h1>🛍️ Products</h1>
+
+            <h2>AI Bargaining Agent</h2>
+
+            <p>
+                Browse products, negotiate prices and add items to cart
+            </p>
+
+            <div class="table-container">
+                {{ data|safe }}
+            </div>
+
+            <div class="home-link">
+                <a href="javascript:history.back();">
+                    ← Back
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

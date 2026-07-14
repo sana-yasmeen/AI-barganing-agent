@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Orders | AI Bargaining Agent</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<div class="hero-section">
+
+    <div class="overlay">
+
+        <div class="login-card register-card order-card">
+
+            <!-- Top Navigation -->
+
+            <div class="top-nav">
+                <a href="{% url 'AddProduct' %}">🛍️ Add Product</a>
+                <span>|</span>
+                <a href="{% url 'ViewFeedback' %}">💬 Feedback</a>
+                <span>|</span>
+                <a href="{% url 'index' %}">🚪 Logout</a>
+            </div>
+
+            <h1>📦 Orders</h1>
+
+            <h2>AI Bargaining Agent</h2>
+
+            <p>
+                View and manage all customer purchase orders
+            </p>
+
+            <div class="table-container">
+                {{ data|safe }}
+            </div>
+
+            <div class="home-link">
+                <a href="{% url 'AdminLoginAction' %}">
+                    ← Back to Dashboard
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

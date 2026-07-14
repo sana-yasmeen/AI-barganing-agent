@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Bargaining Agent : Smart Price Negotiator</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<div class="hero-section">
+
+    <div class="overlay">
+
+        <div class="login-card">
+
+            <h1>🤖 AI Bargaining Agent</h1>
+
+            <h2>Smart Price Negotiator</h2>
+
+            <p>
+                Negotiate Smarter. Shop Better. Save More.
+            </p>
+
+            <div class="button-group">
+
+				<a href="{% url 'AdminLogin' %}" class="btn btn-admin">
+                    Admin Login
+                </a>
+
+                <a href="{% url 'Login' %}" class="btn btn-user">
+                    User Login
+                </a>
+
+                <a href="{% url 'Register' %}" class="btn btn-register">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

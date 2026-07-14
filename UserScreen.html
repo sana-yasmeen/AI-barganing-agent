@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Dashboard | AI Bargaining Agent</title>
+
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+
+<div class="hero-section">
+
+    <div class="overlay">
+
+        <div class="login-card admin-dashboard">
+
+            <div class="top-nav">
+                <a href="{% url 'ItemSearch' %}">🔍 Search Catalogue</a>
+                <span>|</span>
+                <a href="{% url 'TrackOrder' %}">📦 Track Order</a>
+                <span>|</span>
+                <a href="{% url 'Feedback' %}">💬 Feedback</a>
+                <span>|</span>
+                <a href="{% url 'index' %}">🚪 Logout</a>
+            </div>
+
+            <h1>🛍️ User</h1>
+
+            <h2>AI Bargaining Agent</h2>
+
+            <p>
+                Smart Price Negotiator for Online Apparel Shopping
+            </p>
+
+            {% if data %}
+            <div class="welcome-text">
+                {{ data }}
+            </div>
+            {% endif %}
+
+            <div class="dashboard-buttons">
+
+                <a href="{% url 'ItemSearch' %}"
+                   class="btn btn-user">
+                    Search Catalogue
+                </a
+
+                <a href="{% url 'TrackOrder' %}"
+                   class="btn btn-register">
+                    Track Orders
+                </a>
+
+                <a href="{% url 'Feedback' %}"
+                   class="btn btn-admin">
+                    Feedback
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

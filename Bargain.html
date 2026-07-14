@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>Bargain Product | AI Bargaining Agent</title>
+
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<script>
+function validate(){
+
+    var x = document.forms["f1"]["counter"].value;
+
+    if(x == null || x==""){
+        alert("Please enter counter price");
+        document.f1.counter.focus();
+        return false;
+    }
+
+    if(isNaN(x)){
+        alert("Counter price must be numeric");
+        document.f1.counter.focus();
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="hero-section">
+
+<div class="overlay">
+
+    <div class="login-card">
+
+        <div class="top-nav">
+            <a href="{% url 'ItemSearch' %}">🔍 Search Catalogue</a>
+            <span>|</span>
+            <a href="{% url 'TrackOrder' %}">📦 Track Order</a>
+            <span>|</span>
+            <a href="{% url 'Feedback' %}">💬 Feedback</a>
+            <span>|</span>
+            <a href="{% url 'index' %}">🚪 Logout</a>
+        </div>
+
+        <h1> Bargain</h1>
+
+        <h2>AI Bargaining Agent</h2>
+
+        <p>
+            Negotiate a better price with our smart bargaining system
+        </p>
+
+        {% if data %}
+        <div class="welcome-text">
+            {{ data }}
+        </div>
+        {% endif %}
+
+        <form name="f1"
+              method="post"
+              action="{% url 'BargainAction' %}"
+              onsubmit="return validate()">
+
+            {% csrf_token %}
+
+            <div class="input-group">
+
+                <label>Product ID</label>
+
+                <input type="text"
+                       name="pid"
+                       value="{{ pid }}"
+                       readonly>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Original Price</label>
+
+                <input type="text"
+                       name="cost"
+                       value="{{ cost }}"
+                       readonly>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Counter Price</label>
+
+                <input type="text"
+                       name="counter"
+                       placeholder="Enter your offer price">
+
+            </div>
+
+            <input type="submit"
+                   value="Submit Offer"
+                   class="btn btn-register">
+
+        </form>
+
+        <div class="home-link" style="margin-top:25px;">
+            <a href="javascript:history.back();">
+                ← Back to Products
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</body>
+</html>
